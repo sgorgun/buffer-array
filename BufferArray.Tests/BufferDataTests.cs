@@ -2,6 +2,9 @@ using System;
 using System.Linq;
 using NUnit.Framework;
 
+#pragma warning disable SA1600
+#pragma warning disable CA1707
+
 namespace BufferArray.Tests
 {
     [TestFixture]
@@ -52,10 +55,10 @@ namespace BufferArray.Tests
         [Test]
         public void ToArray_ReturnEmptyArray()
         {
-            var (expected, count) = BufferData.ToArray(Enumerable.Repeat(12,0));
+            var (expected, count) = BufferData.ToArray(Enumerable.Repeat(12, 0));
             
             Assert.AreEqual(expected, Array.Empty<int>());
-            Assert.AreEqual(count, 0);
+            Assert.AreEqual(0, count);
         }
     }
 }
