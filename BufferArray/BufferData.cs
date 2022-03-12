@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
@@ -17,7 +17,7 @@ namespace BufferArray
         /// <param name="source">The enumerable sequence.</param>
         /// <typeparam name="T">Type of the elements of the sequence.</typeparam>
         /// <returns>Single dimension zero based array.</returns>
-        internal static (T[]? buffer, int count) ToArray<T>(IEnumerable<T>? source)
+        public static (T[]? buffer, int count) ToArray<T>(IEnumerable<T>? source)
         {
             throw new NotImplementedException();
         }
