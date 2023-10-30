@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
@@ -19,7 +19,27 @@ namespace BufferArray
         /// <returns>Single dimension zero based array.</returns>
         public static (T[]? buffer, int count) ToArray<T>(IEnumerable<T>? source)
         {
-            throw new NotImplementedException();
+            if (source is ICollection<T> collection)
+            {
+                var array = new T[collection.Count];
+                collection.CopyTo(array, 0);
+                return (array, array.Length);
+            }
+
+            var buffer = new T[4];
+            var count = 0;
+
+            foreach (var item in source!)
+            {
+                if (count == buffer.Length)
+                {
+                    Array.Resize(ref buffer, buffer.Length * 2);
+                }
+
+                buffer[count++] = item;
+            }
+
+            return (count == 0 ? Array.Empty<T>() : buffer, count);
         }
     }
 }
